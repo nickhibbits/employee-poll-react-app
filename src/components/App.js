@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/App.css";
 import Login from "./Login";
+import "../styles/Login.css";
 
 function App() {
   // const [user, setUser] = useState({});
@@ -8,7 +9,11 @@ function App() {
   const users = ["sally", "jess", "bill"];
 
   // if (!user) {
-  return <Login users={users} setUser />;
+  return (
+    <div className="screen-center">
+      <Login users={users} setUser />
+    </div>
+  );
   // }
 
   return <div className="App">APP</div>;

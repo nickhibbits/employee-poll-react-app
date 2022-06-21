@@ -1,0 +1,30 @@
+.login-component {
+  border: solid 1px lightgray;
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+label {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+}
+
+.verify-user-wrapper {
+  display: flex;
+}
+
+.display-user {
+  margin-left: 5px;
+  color: gray;
+}
+
+select {
+  margin: 1px 0px 5px 0px;
+}

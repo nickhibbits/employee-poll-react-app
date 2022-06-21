@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../styles/Login.css";
+import "../styles/shared.css";
 
 const Login = ({ users, setUser }) => {
   const [user, _setUser] = useState("Select");
@@ -15,11 +17,17 @@ const Login = ({ users, setUser }) => {
     console.log(user);
   }
   return (
-    <div className="login-wrapper">
+    <div className="login-component">
       <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
         <label>Login</label>
-        <div>As {user}</div>
+        <div className="verify-user-wrapper">
+          <div>As </div>
+          <div className="display-user"> {user}</div>
+        </div>
         <select onChange={(e) => handleChange(e.target.value)}>
+          <option value="none" disabled selected>
+            Select
+          </option>
           {users.map((user, i) => (
             <option key={i} value={user}>
               {user}

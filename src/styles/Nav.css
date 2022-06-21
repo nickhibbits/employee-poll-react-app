@@ -1,0 +1,19 @@
+.nav-component {
+  border-bottom: solid 1px lightgray;
+}
+
+.nav-options {
+  display: flex;
+
+  list-style-type: none;
+}
+
+.nav-option {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.nav-option:hover {
+  color: gray;
+  transition: ease-in 0.5s;
+}

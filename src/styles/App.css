@@ -1,5 +1,6 @@
 .app-component {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 30px;
   padding: 10px;
+  border: solid 1px red;
 }

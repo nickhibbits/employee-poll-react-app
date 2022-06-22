@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../styles/App.css";
 import Login from "./Login";
 import Nav from "./Nav";
+import QuestionsList from "./QuestionsList";
 // import "../styles/Login.css";
 
 function App() {
@@ -19,7 +20,11 @@ function App() {
 
   return (
     <div className="app-component">
-      <Nav />
+      <div className="app-wrapper">
+        <Nav />
+        <QuestionsList title={"Unanswered"} />
+        <QuestionsList title={"Answered"} />
+      </div>
     </div>
   );
 }

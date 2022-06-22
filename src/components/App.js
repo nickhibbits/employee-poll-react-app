@@ -5,7 +5,7 @@ import Login from "./Login";
 import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
 import Vote from "./Vote";
-import QuestionsList from "./QuestionsList";
+import Leaderboard from "./Leaderboard";
 import { Routes, Route } from "react-router-dom";
 // import "../styles/Login.css";
 
@@ -25,7 +25,7 @@ function App() {
       <div className="app-wrapper">
         <Nav />
         <Routes>
-          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/" exact element={<Leaderboard />} />
           <Route path="/questions/:question_id" element={<Vote />} />
           <Route path="/add" element={<NewQuestion />} />
         </Routes>

@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
 import Vote from "./Vote";
 import QuestionsList from "./QuestionsList";
+import { Routes, Route } from "react-router-dom";
 // import "../styles/Login.css";
 
 function App() {
@@ -23,9 +24,11 @@ function App() {
     <div className="app-component">
       <div className="app-wrapper">
         <Nav />
-        {/* <Dashboard /> */}
-        <Vote />
-        {/* <NewQuestion /> */}
+        <Routes>
+          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/questions/:question_id" element={<Vote />} />
+          <Route path="/add" element={<NewQuestion />} />
+        </Routes>
       </div>
     </div>
   );

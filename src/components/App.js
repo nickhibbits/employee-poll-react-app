@@ -1,8 +1,10 @@
 import { useState } from "react";
-import "../styles/App.css";
+import "../styles/app.css";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Nav from "./Nav";
+import NewQuestion from "./NewQuestion";
+import Vote from "./Vote";
 import QuestionsList from "./QuestionsList";
 // import "../styles/Login.css";
 
@@ -21,7 +23,9 @@ function App() {
     <div className="app-component">
       <div className="app-wrapper">
         <Nav />
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <Vote />
+        {/* <NewQuestion /> */}
       </div>
     </div>
   );

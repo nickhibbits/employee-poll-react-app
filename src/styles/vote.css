@@ -1,0 +1,40 @@
+.vote-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.options-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.option {
+  border: solid 2px rgb(211, 211, 211);
+  padding: 15px;
+  border-radius: 10px;
+  transition: ease-in, 0.5s;
+}
+
+.option:hover {
+  box-shadow: 5px 10px rgb(211, 211, 211);
+  cursor: pointer;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  margin: 0px 40px;
+}

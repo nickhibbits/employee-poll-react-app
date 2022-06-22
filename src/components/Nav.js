@@ -1,4 +1,5 @@
-import "../styles/Nav.css";
+import "../styles/nav.css";
+
 const Nav = () => {
   return (
     <div className="nav-component">

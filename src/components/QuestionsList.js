@@ -9,7 +9,7 @@ const QuestionsList = ({ title }) => {
       <h1>{title}</h1>
       <div className="questions-list-wrapper">
         {questionIds.map((questionId) => {
-          return <Question questionId={questionId} />;
+          return <Question key={questionId} questionId={questionId} />;
         })}
       </div>
     </div>

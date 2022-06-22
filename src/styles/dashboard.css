@@ -1,0 +1,9 @@
+.filter-wrapper {
+  display: flex;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}

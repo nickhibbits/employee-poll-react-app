@@ -1,7 +1,6 @@
 .questions-list-component {
   border-bottom: solid 1px rgb(211, 211, 211);
-  padding-bottom: 20px;
-  margin-bottom: 40px;
+  padding: 40px;
 }
 
 .questions-list-wrapper {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/Login.css";
-import "../styles/shared.css";
+import "../styles/index.css";
 
 const Login = ({ users, setUser }) => {
   const [user, _setUser] = useState("Select");
@@ -19,7 +19,7 @@ const Login = ({ users, setUser }) => {
   return (
     <div className="login-component">
       <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
-        <label>Login</label>
+        <label className="form-title">Login</label>
         <div className="verify-user-wrapper">
           <div>As </div>
           <div className="display-user"> {user}</div>

@@ -2,13 +2,13 @@ import { useState } from "react";
 import "../styles/login.css";
 import "../styles/index.css";
 
-const Login = ({ users, setUser }) => {
-  const [user, _setUser] = useState("Select");
+const Login = ({ users }) => {
+  const [user, setUser] = useState("Select");
 
   console.log("users", users);
 
   function handleChange(user) {
-    _setUser(user);
+    setUser(user);
   }
 
   function handleSubmit(e) {

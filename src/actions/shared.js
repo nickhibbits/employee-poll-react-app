@@ -7,7 +7,6 @@ export function handleInitialData() {
     return _getUsers().then((res) => {
       console.log("res", res);
       dispatch(receiveUsers(res));
-      dispatch(setAuth(""));
     });
   };
 }

@@ -17,7 +17,7 @@ function App(props) {
 
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, props.authedUser);
+  }, []);
 
   if (!props.authedUser) {
     return (

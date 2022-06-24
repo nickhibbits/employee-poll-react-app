@@ -14,7 +14,9 @@ const Login = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
     props.dispatch(setAuth(user));
+    props.signedIn();
   }
+
   return (
     <div className="login-component">
       <form className="login-form" onSubmit={(e) => handleSubmit(e)}>

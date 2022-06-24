@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
@@ -14,6 +14,9 @@ import { handleInitialData } from "../actions/shared";
 
 function App(props) {
   // const users = ["sally", "jess", "bill"];
+  console.log("props", props);
+
+  const [_authedUser, set_authedUser] = useState(false);
 
   useEffect(() => {
     props.dispatch(handleInitialData());
@@ -22,7 +25,7 @@ function App(props) {
   if (!props.authedUser) {
     return (
       <div className="screen-center">
-        <Login />
+        <Login signedIn={() => set_authedUser(!_authedUser)} />
       </div>
     );
   }
@@ -43,7 +46,7 @@ function App(props) {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  authedUser: Object.values(auth) > 1 ? auth : false,
+  authedUser: auth.signedIn ? auth : false,
 });
 
 export default connect(mapStateToProps)(App);

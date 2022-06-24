@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "../styles/login.css";
 import "../styles/index.css";
+import { setAuth } from "../actions/auth";
+import { connect } from "react-redux";
 
-const Login = ({ users }) => {
+const Login = (props) => {
   const [user, setUser] = useState("Select");
-
-  console.log("users", users);
 
   function handleChange(user) {
     setUser(user);
@@ -13,8 +13,7 @@ const Login = ({ users }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(user);
+    props.dispatch(setAuth(user));
   }
   return (
     <div className="login-component">
@@ -28,7 +27,7 @@ const Login = ({ users }) => {
           <option value="none" disabled selected>
             Select
           </option>
-          {users.map((user, i) => (
+          {props.users.map((user, i) => (
             <option key={i} value={user}>
               {user}
             </option>
@@ -40,4 +39,8 @@ const Login = ({ users }) => {
   );
 };
 
-export default Login;
+const mapStateToProps = ({ users }) => ({
+  users: Object.keys(users),
+});
+
+export default connect(mapStateToProps)(Login);

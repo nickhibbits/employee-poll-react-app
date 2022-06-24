@@ -1,11 +1,14 @@
+import { BrowserRouter } from "react-router-dom";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/index.css";
 import App from "./components/App";
-import { configureStore } from "@reduxjs/toolkit";
-import { BrowserRouter } from "react-router-dom";
 import reducer from "./reducers";
 import middleware from "./middleware";
+
+import "./styles/index.css";
 
 const store = configureStore({ reducer, middleware });
 

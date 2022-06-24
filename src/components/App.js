@@ -9,20 +9,20 @@ import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
 import Vote from "./Vote";
 import Leaderboard from "./Leaderboard";
-import { receiveUsers } from "../actions/users";
+import { handleInitialData } from "../actions/shared";
 // import "../styles/Login.css";
 
 function App(props) {
   // const users = ["sally", "jess", "bill"];
 
   useEffect(() => {
-    props.dispatch(handleInitialData);
-  });
+    props.dispatch(handleInitialData());
+  }, props.authedUser);
 
   if (!props.authedUser) {
     return (
       <div className="screen-center">
-        <Login users={props.usernames} />
+        <Login />
       </div>
     );
   }
@@ -42,9 +42,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ auth, users }) => ({
-  authedUser: auth.length() > 1,
-  usernames: Object.keys(users),
+const mapStateToProps = ({ auth }) => ({
+  authedUser: Object.values(auth) > 1 ? auth : false,
 });
 
 export default connect(mapStateToProps)(App);

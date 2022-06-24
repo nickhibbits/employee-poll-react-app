@@ -8,9 +8,10 @@ import reducer from "./reducers";
 import middleware from "./middleware";
 
 const store = configureStore({ reducer, middleware });
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

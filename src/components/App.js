@@ -9,10 +9,15 @@ import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
 import Vote from "./Vote";
 import Leaderboard from "./Leaderboard";
+import { receiveUsers } from "../actions/users";
 // import "../styles/Login.css";
 
-function App() {
+function App(props) {
   // const users = ["sally", "jess", "bill"];
+
+  useEffect(() => {
+    props.dispatch(handleInitialData);
+  });
 
   if (!props.authedUser) {
     return (
@@ -38,7 +43,7 @@ function App() {
 }
 
 const mapStateToProps = ({ auth, users }) => ({
-  authedUser: auth,
+  authedUser: auth.length() > 1,
   usernames: Object.keys(users),
 });
 

@@ -1,15 +1,19 @@
 import "../styles/_questions.css";
 import Question from "./Question";
 
-const questionIds = ["1", "2", "3", "4"];
-
-const QuestionsList = ({ title }) => {
+const QuestionsList = (props) => {
   return (
     <div className="questions-list-component">
-      <h1>{title}</h1>
+      <h1>{props.title}</h1>
       <div className="questions-list-wrapper">
-        {questionIds.map((questionId) => {
-          return <Question key={questionId} questionId={questionId} />;
+        {Object.values(props.questions).map((question) => {
+          return (
+            <Question
+              key={question.questionId}
+              author={question.author}
+              timestamp={question.timestamp}
+            />
+          );
         })}
       </div>
     </div>

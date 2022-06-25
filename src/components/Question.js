@@ -1,10 +1,11 @@
 import "../styles/_questions.css";
+import { formatDate } from "../utils/helpers";
 
-const Question = ({ questionId }) => {
+const Question = (props) => {
   return (
     <div className="question-component">
-      <div className="card-title">User</div>
-      <div className="card-date">0:00pm, 00/00/0000</div>
+      <div className="card-title">{props.author}</div>
+      <div className="card-date">{formatDate(props.timestamp)}</div>
     </div>
   );
 };

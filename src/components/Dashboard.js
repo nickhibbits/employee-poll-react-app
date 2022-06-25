@@ -30,9 +30,12 @@ const Dashboard = (props) => {
         </label>
       </div>
       {showAnsweredQuestions ? (
-        <QuestionsList title={"Answered"} />
+        <QuestionsList questions={props.answeredQuestions} title={"Answered"} />
       ) : (
-        <QuestionsList title={"Unanswered"} />
+        <QuestionsList
+          questions={props.unansweredQuestions}
+          title={"Unanswered"}
+        />
       )}
     </div>
   );

@@ -33,7 +33,7 @@ function App(props) {
         <Nav />
         <Routes>
           <Route path="/" exact element={<Dashboard />} />
-          <Route path="/questions/:question_id" element={<Vote />} />
+          <Route path="/questions/:id" element={<Vote />} />
           <Route path="/add" element={<NewQuestion />} />
           <Route path="/leaderboard" exact element={<Leaderboard />} />
         </Routes>

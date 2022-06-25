@@ -32,10 +32,10 @@ const Vote = (props) => {
         <h2>Would you rather</h2>
         <div className="options-wrapper">
           <div className="option" onClick={(e) => handleSelect(e)}>
-            Do this
+            {props.question.optionOne.text}
           </div>
           <div className="or-divider">or</div>
-          <div className="option">Do that</div>
+          <div className="option">{props.question.optionTwo.text}</div>
         </div>
       </section>
     </div>

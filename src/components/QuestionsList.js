@@ -7,14 +7,7 @@ const QuestionsList = (props) => {
       <h1>{props.title}</h1>
       <div className="questions-list-wrapper">
         {Object.values(props.questions).map((question) => {
-          return (
-            <Question
-              key={question.id}
-              author={question.author}
-              id={question.id}
-              timestamp={question.timestamp}
-            />
-          );
+          return <Question {...question} />;
         })}
       </div>
     </div>

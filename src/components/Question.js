@@ -3,8 +3,9 @@ import "../styles/_questions.css";
 import { formatDate } from "../utils/helpers";
 
 const Question = (props) => {
+  const { id } = props;
   return (
-    <Link className="question-component" to={`/questions/${props.id}`}>
+    <Link className="question-component" to={`/questions/${id}`}>
       <div className="card-title">{props.author}</div>
       <div className="card-date">{formatDate(props.timestamp)}</div>
     </Link>

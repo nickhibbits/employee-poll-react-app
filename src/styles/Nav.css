@@ -12,6 +12,8 @@
 .nav-option {
   margin-right: 15px;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 }
 
 .nav-option:hover {

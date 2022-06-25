@@ -9,8 +9,9 @@ const QuestionsList = (props) => {
         {Object.values(props.questions).map((question) => {
           return (
             <Question
-              key={question.questionId}
+              key={question.id}
               author={question.author}
+              id={question.id}
               timestamp={question.timestamp}
             />
           );

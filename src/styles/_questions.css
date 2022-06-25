@@ -16,6 +16,8 @@
   padding: 15px;
   border-radius: 10px;
   transition: ease-in, 0.5s;
+  color: inherit;
+  text-decoration: none;
 }
 
 .question-component:hover {

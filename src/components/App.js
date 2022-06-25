@@ -13,9 +13,6 @@ import { handleInitialData } from "../actions/shared";
 // import "../styles/Login.css";
 
 function App(props) {
-  // const users = ["sally", "jess", "bill"];
-  console.log("props", props);
-
   const [_authedUser, set_authedUser] = useState(false);
 
   useEffect(() => {

@@ -31,11 +31,9 @@ const Vote = (props) => {
   }
 
   function handleSubmit() {
-    const answer = {
-      [selected]: props.question[selected],
-    };
+    console.log("props.question[selected]", props.question[selected]);
 
-    props.dispatch(handleAnswerQuestion(props.question.id, answer));
+    props.dispatch(handleAnswerQuestion(props.question.id, selected));
   }
 
   if (props.question === 404) {

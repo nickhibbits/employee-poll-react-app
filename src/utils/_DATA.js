@@ -207,6 +207,8 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
         },
       };
 
+      console.log("users", users);
+
       questions = {
         ...questions,
         [qid]: {
@@ -217,6 +219,8 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           },
         },
       };
+
+      console.log("questions", questions);
 
       resolve(true);
     }, 500);

@@ -17,19 +17,21 @@ export function handleInitialData() {
   };
 }
 
-export function handleAnswerQuestion(qid, _answer) {
-  // console.log("qid", qid);s
+export function handleAnswerQuestion(qid, answer) {
+  console.log("_answer", answer);
+
   return async (dispatch, getState) => {
     const { auth } = getState();
+    const authedUser = auth.signedIn;
 
     await _saveQuestionAnswer({
       authedUser,
       qid,
       answer,
     }).then(() => {
-      console.log("qid", qid);
-      console.log("answer", answer);
-      dispatch(addQuestionAnswer(qid, _answer, auth.signedIn));
+      // console.log("qid", qid);
+      // console.log("answer", answer);
+      dispatch(addQuestionAnswer(qid, answer, auth.signedIn));
     });
   };
 }

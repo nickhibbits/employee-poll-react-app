@@ -2,6 +2,8 @@ import { ADD_QUESTION_ANSWER, RECEIVE_QUESTIONS } from "../actions/questions";
 
 export default function questions(state = {}, action) {
   console.log("action", action);
+
+  const { id, selectedOption, signedInUser } = action;
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {
@@ -9,17 +11,15 @@ export default function questions(state = {}, action) {
         ...action.questions,
       };
     case ADD_QUESTION_ANSWER:
-      console.log("state[action.id]", state[action.id]);
+      console.log("state", state);
+      console.log("state[id][selectedOption]", state[id][selectedOption]);
       return {
         ...state,
-        [action.id]: {
-          ...state[action.id],
-          [action.selectedOption]: {
-            ...[action.selectedOption.option],
-            votes: [
-              ...questions[action.id][action.selectedOption.optionName].votes,
-              action.signedInUser,
-            ],
+        [id]: {
+          ...state[id],
+          [selectedOption]: {
+            ...state[id][selectedOption],
+            votes: state[id][selectedOption].votes.concat([signedInUser]),
           },
         },
       };

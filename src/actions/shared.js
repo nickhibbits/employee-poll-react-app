@@ -1,6 +1,6 @@
-import { _getQuestions, _getUsers } from "../utils/_DATA";
+import { _getQuestions, _getUsers, _saveQuestionAnswer } from "../utils/_DATA";
 import { setAuth } from "./auth";
-import { receiveQuestions } from "./questions";
+import { addQuestionAnswer, receiveQuestions } from "./questions";
 import { receiveUsers } from "./users";
 
 export function handleInitialData() {
@@ -13,6 +13,27 @@ export function handleInitialData() {
     _getQuestions().then((res) => {
       console.log("res", res);
       dispatch(receiveQuestions(res));
+    });
+  };
+}
+
+export function handleAnswerQuestion(qid, _answer) {
+  // console.log("qid", qid);s
+  return async (dispatch, getState) => {
+    const { auth } = getState();
+    const { optionName, option } = _answer;
+
+    const authedUser = auth.signedIn;
+    const answer = optionName;
+
+    await _saveQuestionAnswer({
+      authedUser,
+      qid,
+      answer,
+    }).then(() => {
+      console.log("qid", qid);
+      console.log("answer", answer);
+      dispatch(addQuestionAnswer(qid, _answer, auth.signedIn));
     });
   };
 }

@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { MdCheck } from "react-icons/md";
 import { useState } from "react";
+import { handleAnswerQuestion } from "../actions/shared";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -22,11 +23,18 @@ const Vote = (props) => {
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;
-    selectedText === `${optionOne.text}?` ? setSelected(1) : setSelected(2);
+    selectedText === `${optionOne.text}?`
+      ? setSelected("optionOne")
+      : setSelected("optionTwo");
   }
 
   function handleSubmit() {
-    console.log("submit");
+    const answer = {
+      optionName: selected,
+      option: props.question[selected],
+    };
+
+    props.dispatch(handleAnswerQuestion(props.question.id, answer));
   }
 
   if (props.question === 404) {
@@ -45,8 +53,12 @@ const Vote = (props) => {
           <div
             className="option-wrapper"
             style={
-              selected === 1
-                ? { background: "lightgreen", borderRadius: "10px" }
+              selected === "optionOne"
+                ? {
+                    background: "lightgreen",
+                    borderRadius: "10px",
+                    transition: "ease 0.5s",
+                  }
                 : null
             }
           >
@@ -54,7 +66,7 @@ const Vote = (props) => {
               <div className="checkmark-wrapper">
                 <MdCheck
                   size={20}
-                  display={selected === 1 ? "block" : "none"}
+                  display={selected === "optionOne" ? "block" : "none"}
                 />
               </div>
             </div>
@@ -66,8 +78,12 @@ const Vote = (props) => {
           <div
             className="option-wrapper"
             style={
-              selected === 2
-                ? { background: "lightgreen", borderRadius: "10px" }
+              selected === "optionTwo"
+                ? {
+                    background: "lightgreen",
+                    borderRadius: "10px",
+                    transition: "ease 0.5s",
+                  }
                 : null
             }
             onClick={(e) => handleSelect(e)}
@@ -77,7 +93,7 @@ const Vote = (props) => {
                 <MdCheck
                   size={20}
                   color="black"
-                  display={selected === 2 ? "block" : "none"}
+                  display={selected === "optionTwo" ? "block" : "none"}
                 />
               </div>
             </div>

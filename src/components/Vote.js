@@ -19,7 +19,7 @@ const withRouter = (Component) => {
 };
 
 const Vote = (props) => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(props.userAnswer);
   const { optionOne } = props.question;
 
   function handleSelect(e) {
@@ -69,7 +69,7 @@ const Vote = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions }, props) => {
+const mapStateToProps = ({ questions, users, auth }, props) => {
   const { id } = props.router.params;
   console.log("id", id);
 
@@ -78,6 +78,7 @@ const mapStateToProps = ({ questions }, props) => {
   return {
     id,
     question: questions[id] ? questions[id] : 404,
+    userAnswer: users[auth.signedIn].answers[id],
   };
 };
 

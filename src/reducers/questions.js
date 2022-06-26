@@ -9,12 +9,13 @@ export default function questions(state = {}, action) {
         ...action.questions,
       };
     case ADD_QUESTION_ANSWER:
+      console.log("state[action.id]", state[action.id]);
       return {
         ...state,
         [action.id]: {
-          ...questions[action.id],
-          [action.selectedOption.option]: {
-            ...questions[action.id][action.selectedOption.option],
+          ...state[action.id],
+          [action.selectedOption]: {
+            ...[action.selectedOption.option],
             votes: [
               ...questions[action.id][action.selectedOption.optionName].votes,
               action.signedInUser,

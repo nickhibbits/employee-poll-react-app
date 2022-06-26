@@ -21,10 +21,6 @@ export function handleAnswerQuestion(qid, _answer) {
   // console.log("qid", qid);s
   return async (dispatch, getState) => {
     const { auth } = getState();
-    const { optionName, option } = _answer;
-
-    const authedUser = auth.signedIn;
-    const answer = optionName;
 
     await _saveQuestionAnswer({
       authedUser,

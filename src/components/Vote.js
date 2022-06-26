@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { MdCheck } from "react-icons/md";
 import { useState } from "react";
 import { handleAnswerQuestion } from "../actions/shared";
+import VoteOption from "./VoteOption";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -23,6 +24,7 @@ const Vote = (props) => {
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;
+    console.log("selectedText", selectedText);
     selectedText === `${optionOne.text}?`
       ? setSelected("optionOne")
       : setSelected("optionTwo");
@@ -30,8 +32,7 @@ const Vote = (props) => {
 
   function handleSubmit() {
     const answer = {
-      optionName: selected,
-      option: props.question[selected],
+      [selected]: props.question[selected],
     };
 
     props.dispatch(handleAnswerQuestion(props.question.id, answer));
@@ -50,55 +51,19 @@ const Vote = (props) => {
       <section className="vote-options-wrapper">
         <h2>Would you rather</h2>
         <div className="options-container">
-          <div
-            className="option-wrapper"
-            style={
-              selected === "optionOne"
-                ? {
-                    background: "lightgreen",
-                    borderRadius: "10px",
-                    transition: "ease 0.5s",
-                  }
-                : null
-            }
-          >
-            <div className="checkmark-container">
-              <div className="checkmark-wrapper">
-                <MdCheck
-                  size={20}
-                  display={selected === "optionOne" ? "block" : "none"}
-                />
-              </div>
-            </div>
-            <div className="option" onClick={(e) => handleSelect(e)}>
-              {props.question.optionOne.text}?
-            </div>
-          </div>
+          <VoteOption
+            text={props.question.optionOne.text}
+            handleSelect={handleSelect}
+            option={"optionOne"}
+            selected={selected}
+          />
           <div className="or-divider">or</div>
-          <div
-            className="option-wrapper"
-            style={
-              selected === "optionTwo"
-                ? {
-                    background: "lightgreen",
-                    borderRadius: "10px",
-                    transition: "ease 0.5s",
-                  }
-                : null
-            }
-            onClick={(e) => handleSelect(e)}
-          >
-            <div className="checkmark-container">
-              <div className="checkmark-wrapper">
-                <MdCheck
-                  size={20}
-                  color="black"
-                  display={selected === "optionTwo" ? "block" : "none"}
-                />
-              </div>
-            </div>
-            <div className="option">{props.question.optionTwo.text}?</div>
-          </div>
+          <VoteOption
+            text={props.question.optionTwo.text}
+            handleSelect={handleSelect}
+            option={"optionTwo"}
+            selected={selected}
+          />
         </div>
       </section>
       <button onClick={handleSubmit}>Submit</button>

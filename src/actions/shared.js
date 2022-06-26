@@ -1,7 +1,7 @@
 import { _getQuestions, _getUsers, _saveQuestionAnswer } from "../utils/_DATA";
 import { setAuth } from "./auth";
 import { addQuestionAnswer, receiveQuestions } from "./questions";
-import { receiveUsers } from "./users";
+import { addUserAnswer, receiveUsers } from "./users";
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -32,6 +32,7 @@ export function handleAnswerQuestion(qid, answer) {
       // console.log("qid", qid);
       // console.log("answer", answer);
       dispatch(addQuestionAnswer(qid, answer, auth.signedIn));
+      dispatch(addUserAnswer(qid, answer, auth.signedIn));
     });
   };
 }

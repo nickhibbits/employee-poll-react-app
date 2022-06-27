@@ -14,7 +14,7 @@ export default function users(state = {}, action) {
         [action.signedInUser]: {
           ...state[action.signedInUser],
           answers: {
-            ...state.answers,
+            ...state[action.signedInUser].answers,
             [action.qid]: action.answer,
           },
         },

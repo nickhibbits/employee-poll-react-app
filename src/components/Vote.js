@@ -80,6 +80,7 @@ const Vote = (props) => {
           />
           {showVoteStats ? (
             <div className="stats-wrapper">
+              {/* <div className="vote-stat-title">This option received</div> */}
               <div className="vote-stat-info">
                 {createStats(props.question, "optionOne").votePercentage}% of
                 votes cast
@@ -98,6 +99,7 @@ const Vote = (props) => {
           />
           {showVoteStats ? (
             <div className="stats-wrapper">
+              {/* <div className="vote-stat-title">This option received</div> */}
               <div className="vote-stat-info">
                 {createStats(props.question, "optionTwo").votePercentage}% of
                 votes cast

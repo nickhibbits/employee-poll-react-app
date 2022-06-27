@@ -1,4 +1,8 @@
-import { ADD_QUESTION_ANSWER, RECEIVE_QUESTIONS } from "../actions/questions";
+import {
+  ADD_QUESTION_ANSWER,
+  RECEIVE_QUESTIONS,
+  ADD_QUESTION,
+} from "../actions/questions";
 
 export default function questions(state = {}, action) {
   const { id, selectedOption, signedInUser } = action;
@@ -21,6 +25,11 @@ export default function questions(state = {}, action) {
             votes: state[id][selectedOption].votes.concat([signedInUser]),
           },
         },
+      };
+    case ADD_QUESTION:
+      return {
+        ...state,
+        [action.formattedQuestion.id]: { ...action.formattedQuestion },
       };
     default:
       return state;

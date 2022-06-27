@@ -1,7 +1,12 @@
-import { _getQuestions, _getUsers, _saveQuestionAnswer } from "../utils/_DATA";
+import {
+  _getQuestions,
+  _getUsers,
+  _saveQuestion,
+  _saveQuestionAnswer,
+} from "../utils/_DATA";
 import { setAuth } from "./auth";
-import { addQuestionAnswer, receiveQuestions } from "./questions";
-import { addUserAnswer, receiveUsers } from "./users";
+import { addQuestion, addQuestionAnswer, receiveQuestions } from "./questions";
+import { addUserAnswer, addUserQuestion, receiveUsers } from "./users";
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -27,6 +32,19 @@ export function handleAnswerQuestion(qid, answer) {
     }).then(() => {
       dispatch(addQuestionAnswer(qid, answer, auth.signedIn));
       dispatch(addUserAnswer(qid, answer, auth.signedIn));
+    });
+  };
+}
+
+export function handleAddQuestion(question) {
+  return async (dispatch, getState) => {
+    const { auth } = getState();
+    const authedUser = auth.signedIn;
+
+    await _saveQuestion(question).then((formattedQuestion) => {
+      console.log("formattedQuestion", formattedQuestion);
+      dispatch(addUserQuestion(formattedQuestion, authedUser));
+      dispatch(addQuestion(formattedQuestion));
     });
   };
 }

@@ -46,6 +46,20 @@
   cursor: pointer;
 }
 
+.stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  border: solid 1px black;
+  border-radius: 10px;
+}
+
+.vote-stat-info {
+  display: flex;
+  justify-content: center;
+}
+
 .or-divider {
   display: flex;
   justify-content: center;

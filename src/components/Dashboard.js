@@ -6,8 +6,6 @@ import QuestionsList from "./QuestionsList";
 const Dashboard = (props) => {
   const [showAnsweredQuestions, setShowAnsweredQuestions] = useState(false);
 
-  console.log("dashboard props", props);
-
   return (
     <div className="dashboard-component">
       <div className="filter-wrapper">

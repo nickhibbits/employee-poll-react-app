@@ -1,9 +1,8 @@
 import { ADD_QUESTION_ANSWER, RECEIVE_QUESTIONS } from "../actions/questions";
 
 export default function questions(state = {}, action) {
-  console.log("action", action);
-
   const { id, selectedOption, signedInUser } = action;
+
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {

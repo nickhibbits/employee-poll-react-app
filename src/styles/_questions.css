@@ -5,7 +5,7 @@
 
 .questions-list-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .question-component {

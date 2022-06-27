@@ -24,15 +24,12 @@ const Vote = (props) => {
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;
-    console.log("selectedText", selectedText);
     selectedText === `${optionOne.text}?`
       ? setSelected("optionOne")
       : setSelected("optionTwo");
   }
 
   function handleSubmit() {
-    console.log("props.question[selected]", props.question[selected]);
-
     props.dispatch(handleAnswerQuestion(props.question.id, selected));
   }
 
@@ -72,8 +69,6 @@ const Vote = (props) => {
 const mapStateToProps = ({ questions, users, auth }, props) => {
   const { id } = props.router.params;
   console.log("id", id);
-
-  console.log("question", questions);
 
   return {
     id,

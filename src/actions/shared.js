@@ -6,20 +6,16 @@ import { addUserAnswer, receiveUsers } from "./users";
 export function handleInitialData() {
   return (dispatch) => {
     _getUsers().then((res) => {
-      console.log("res", res);
       dispatch(receiveUsers(res));
     });
 
     _getQuestions().then((res) => {
-      console.log("res", res);
       dispatch(receiveQuestions(res));
     });
   };
 }
 
 export function handleAnswerQuestion(qid, answer) {
-  console.log("_answer", answer);
-
   return async (dispatch, getState) => {
     const { auth } = getState();
     const authedUser = auth.signedIn;
@@ -29,8 +25,6 @@ export function handleAnswerQuestion(qid, answer) {
       qid,
       answer,
     }).then(() => {
-      // console.log("qid", qid);
-      // console.log("answer", answer);
       dispatch(addQuestionAnswer(qid, answer, auth.signedIn));
       dispatch(addUserAnswer(qid, answer, auth.signedIn));
     });

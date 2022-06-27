@@ -1,10 +1,20 @@
-.leaderboard-row-component {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid 1px lightgray;
-  padding: 8px;
+.leaderboard-table {
+  border: solid 1px gray;
+  border-radius: 10px;
 }
 
-.info-wrapper {
+.table-wrapper {
   display: flex;
+  justify-content: center;
+  width: inherit;
+}
+
+.leaderboard-table {
+  padding: 15px;
+  width: 700px;
+}
+
+th {
+  text-align: left;
+  border-bottom: solid 2px lightgray;
 }

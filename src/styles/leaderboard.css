@@ -1,4 +1,4 @@
-.user-row {
+.leaderboard-row-component {
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px lightgray;

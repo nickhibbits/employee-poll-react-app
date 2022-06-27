@@ -1,7 +1,20 @@
 import { useRef } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/shared";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import "../styles/newQuestion.css";
+
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+
+  return ComponentWithRouterProp;
+};
 
 const NewQuestion = (props) => {
   const optionOneRef = useRef(null);
@@ -20,6 +33,7 @@ const NewQuestion = (props) => {
       author,
     };
     props.dispatch(handleAddQuestion(question));
+    props.router.navigate("/");
   }
 
   return (
@@ -58,4 +72,4 @@ function mapStateToProps({ auth }) {
     author: auth.signedIn,
   };
 }
-export default connect(mapStateToProps)(NewQuestion);
+export default withRouter(connect(mapStateToProps)(NewQuestion));

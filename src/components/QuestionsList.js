@@ -7,7 +7,7 @@ const QuestionsList = (props) => {
       <h1>{props.title}</h1>
       <div className="questions-list-wrapper">
         {Object.values(props.questions)
-          .sort((a, b) => a.timestamp - b.timestamp)
+          .sort((a, b) => b.timestamp - a.timestamp)
           .map((question) => {
             return <Question {...question} />;
           })}

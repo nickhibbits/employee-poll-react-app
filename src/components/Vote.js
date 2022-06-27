@@ -2,7 +2,6 @@ import "../styles/vote.css";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { MdCheck } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { handleAnswerQuestion } from "../actions/shared";
 import VoteOption from "./VoteOption";

@@ -15,8 +15,17 @@ const Nav = (props) => {
         <Link to={"/leaderboard"} className="nav-option">
           Leaderboard
         </Link>
+        <div
+          className="nav-option"
+          onClick={() => {
+            return window.location.replace("/");
+          }}
+        >
+          Logout
+        </div>
       </ul>
       <div className="auth-container">
+        <p style={{ color: "gray", marginRight: "5px" }}>Logged in</p>
         <p>{props.signedIn}</p>
       </div>
     </div>

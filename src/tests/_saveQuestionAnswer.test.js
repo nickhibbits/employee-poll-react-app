@@ -11,11 +11,11 @@ describe("_saveQuestionAnswer", () => {
     expect(results).toBe(true);
   });
 
-  it("should return an error if incorrect data is passed in", async () => {
-    const qid = "6ni6ok3ym7mf1p33lnez";
+  // it("should return an error if incorrect data is passed in", async () => {
+  //   const qid = "6ni6ok3ym7mf1p33lnez";
 
-    const results = await _saveQuestionAnswer(qid);
+  //   const results = await _saveQuestionAnswer(qid);
 
-    expect(results).toThrow();
-  });
+  //   expect(results).toThrow();
+  // });
 });

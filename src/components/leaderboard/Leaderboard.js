@@ -13,11 +13,13 @@ const LeaderBoard = ({ users }) => {
       <h2>Leaderboard</h2>
       <div className="table-wrapper">
         <table className="leaderboard-table">
-          <tr className="leaderboard-title-wrapper">
-            <th className="user-title">User</th>
-            <th className="questions-asked-title">Asked</th>
-            <th className="questions-answered-title">Answered</th>
-          </tr>
+          <tbody>
+            <tr className="leaderboard-title-wrapper">
+              <th className="user-title">User</th>
+              <th className="questions-asked-title">Asked</th>
+              <th className="questions-answered-title">Answered</th>
+            </tr>
+          </tbody>
           {Object.values(users)
             .sort((a, b) => {
               return (

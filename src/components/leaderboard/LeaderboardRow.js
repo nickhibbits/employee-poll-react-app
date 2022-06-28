@@ -1,3 +1,4 @@
+import Avatar from "react-avatar";
 import "../../styles/leaderboard.css";
 
 const LeaderboardRow = ({ user }) => {
@@ -6,8 +7,8 @@ const LeaderboardRow = ({ user }) => {
     <tbody>
       <tr className="leaderboard-row-component">
         <td className="user-info-wrapper">
+          <Avatar name={name} size="50px" round={true} />
           <div className="user-name">{name}</div>
-          <div className="user-avatar">(AVATAR)</div>
         </td>
         <td className="questions-asked">{questions.length}</td>
         <td className="questions-answered">{Object.values(answers).length}</td>

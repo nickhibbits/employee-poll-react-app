@@ -14,6 +14,15 @@
   width: 900px;
 }
 
+.user-info-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-left: 5px;
+}
+
 th {
   text-align: left;
   border-bottom: solid 2px lightgray;

@@ -4,7 +4,9 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { handleAnswerQuestion } from "../../actions/shared";
+
 import VoteOption from "./VoteOption";
+import Avatar from "react-avatar";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -66,9 +68,9 @@ const Vote = (props) => {
     <div className="vote-component">
       <section className="user-wrapper">
         <h2>Question from {props.question.author}</h2>
-        <div>avatar placeholder</div>
+        <Avatar name={props.question.author} round={true} />
       </section>
-      <section className="vote-options-wrapper">
+      <section className="vote-options-wrapper" round="10px">
         <h2>Would you rather</h2>
         <div className="options-container">
           <VoteOption

@@ -15,11 +15,15 @@ describe("_saveQuestion", () => {
     });
   });
 
-  // it("should return an error if incorrect data is passed in", async () => {
-  //   const qid = "6ni6ok3ym7mf1p33lnez";
+  it("should return an error if incorrect data is passed in", async () => {
+    const question = {
+      optionOneText: null,
+      optionTwoText: "asdf",
+      author: "bob",
+    };
 
-  //   const results = await _saveQuestion(qid);
-
-  //   expect(results).toThrow();
-  // });
+    await expect(() => _saveQuestion(question)).rejects.toEqual(
+      "Please provide optionOneText, optionTwoText, and author"
+    );
+  });
 });

@@ -11,11 +11,13 @@ describe("_saveQuestionAnswer", () => {
     expect(results).toBe(true);
   });
 
-  // it("should return an error if incorrect data is passed in", async () => {
-  //   const qid = "6ni6ok3ym7mf1p33lnez";
+  it("should return an error if incorrect data is passed in", async () => {
+    const qid = "6ni6ok3ym7mf1p33lnez";
+    const authedUser = "Bob";
+    const answer = null;
 
-  //   const results = await _saveQuestionAnswer(qid);
-
-  //   expect(results).toThrow();
-  // });
+    await expect(() =>
+      _saveQuestionAnswer({ authedUser, qid, answer })
+    ).rejects.toEqual("Please provide authedUser, qid, and answer");
+  });
 });

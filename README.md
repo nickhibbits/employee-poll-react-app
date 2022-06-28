@@ -1,7 +1,9 @@
 # Employee Polls Project
 
-This project simulates a polling application allowing make-believe employees to create questions and vote on those created by other coworkers.<br>
-By logging in as one of these employees, users are shown a list of "Answered" and "Unanswered" question cards they can click to view. For answered questions, users can see the option they chose as well as stats on the number and percentage of votes cast for each option. For unanswered questions, users are shown a similar screen and prompted to choose. Upon answering they are redirected to the dashboard where they're able to see that question newly added to the "Answered" list.<br>
+This project simulates a polling application allowing make-believe employees to create questions and vote on those created by other coworkers.
+
+By logging in as one of these employees, users are shown a list of "Answered" and "Unanswered" question cards they can click to view. For answered questions, users can see the option they chose as well as stats on the number and percentage of votes cast for each option. For unanswered questions, users are shown a similar screen and prompted to choose. Upon answering they are redirected to the dashboard where they're able to see that question newly added to the "Answered" list.
+
 Lastly users can view a leaderboard where all make-believe employees are ranked by the sum of questions answered and asked.
 
 ## Technical Details
@@ -18,14 +20,8 @@ This is the final project for Udacity's React & Redux course.
 
 After cloning the repo...
 
-```
-npm i
-```
-to install the dependencies.
+`npm i` to install the dependencies.
 
-```
-npm start
-```
-to spin up the React dev server.
+`npm start` to spin up the React dev server.
 
 Navigate to localhost:3000 to view the app.

@@ -12,9 +12,7 @@ describe("_saveQuestionAnswer", () => {
   });
 
   it("should return an error if incorrect data is passed in", async () => {
-    const authedUser = false;
     const qid = "6ni6ok3ym7mf1p33lnez";
-    const answer = "optionOne";
 
     const results = await _saveQuestionAnswer(qid);
 

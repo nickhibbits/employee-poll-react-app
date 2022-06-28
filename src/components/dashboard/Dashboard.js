@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import "../styles/dashboard.css";
+import "../../styles/dashboard.css";
 import QuestionsList from "./QuestionsList";
 
 const Dashboard = (props) => {
@@ -15,7 +15,7 @@ const Dashboard = (props) => {
           <input
             type="radio"
             checked={showAnsweredQuestions}
-            onClick={() => setShowAnsweredQuestions(true)}
+            onChange={() => setShowAnsweredQuestions(true)}
           />
         </label>
         <label className="filter-option">
@@ -23,7 +23,7 @@ const Dashboard = (props) => {
           <input
             type="radio"
             checked={!showAnsweredQuestions}
-            onClick={() => setShowAnsweredQuestions(false)}
+            onChange={() => setShowAnsweredQuestions(false)}
           />
         </label>
       </div>

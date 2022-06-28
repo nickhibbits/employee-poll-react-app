@@ -25,8 +25,8 @@ const Login = (props) => {
           <div>As </div>
           <div className="display-user"> {user}</div>
         </div>
-        <select onChange={(e) => handleChange(e.target.value)}>
-          <option value="none" disabled selected>
+        <select defaultValue="" onChange={(e) => handleChange(e.target.value)}>
+          <option value="" disabled>
             Select
           </option>
           {props.users.map((user, i) => (

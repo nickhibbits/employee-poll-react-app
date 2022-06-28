@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import "../styles/leaderboard.css";
+import "../../styles/leaderboard.css";
 import LeaderboardRow from "./LeaderboardRow";
 
 const LeaderBoard = ({ users }) => {

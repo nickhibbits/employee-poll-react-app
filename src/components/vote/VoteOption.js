@@ -1,6 +1,6 @@
 import { MdCheck } from "react-icons/md";
 import { connect } from "react-redux";
-import "../styles/vote.css";
+import "../../styles/vote.css";
 
 const VoteOption = ({ selected, option, handleSelect, text }) => {
   return (

@@ -1,9 +1,9 @@
-import "../styles/vote.css";
+import "../../styles/vote.css";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { handleAnswerQuestion } from "../actions/shared";
+import { handleAnswerQuestion } from "../../actions/shared";
 import VoteOption from "./VoteOption";
 
 const withRouter = (Component) => {
@@ -27,7 +27,7 @@ const Vote = (props) => {
     if (selected) {
       setShowVoteStats(true);
     }
-  }, []);
+  }, [selected]);
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;

@@ -3,21 +3,22 @@ import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import "../styles/app.css";
-import Dashboard from "./Dashboard";
+import Dashboard from "./dashboard/Dashboard";
 import Login from "./Login";
 import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
-import Vote from "./Vote";
-import Leaderboard from "./Leaderboard";
+import Vote from "./vote/Vote";
+import Leaderboard from "./leaderboard/Leaderboard";
 import { handleInitialData } from "../actions/shared";
 // import "../styles/Login.css";
 
 function App(props) {
   const [_authedUser, set_authedUser] = useState(false);
+  const { dispatch } = props;
 
   useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, []);
+    dispatch(handleInitialData());
+  });
 
   if (!props.authedUser) {
     return (

@@ -1,4 +1,4 @@
-import "../styles/leaderboard.css";
+import "../../styles/leaderboard.css";
 
 const LeaderboardRow = ({ user }) => {
   const { name, questions, answers } = user;

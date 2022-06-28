@@ -1,4 +1,4 @@
-import "../styles/_questions.css";
+import "../../styles/_questions.css";
 import Question from "./Question";
 
 const QuestionsList = (props) => {
@@ -9,7 +9,7 @@ const QuestionsList = (props) => {
         {Object.values(props.questions)
           .sort((a, b) => b.timestamp - a.timestamp)
           .map((question) => {
-            return <Question {...question} />;
+            return <Question key={question.id} {...question} />;
           })}
       </div>
     </div>

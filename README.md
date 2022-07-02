@@ -1,4 +1,4 @@
-# Employee Polls Project
+# Employee Poll React App
 
 This project simulates a polling application allowing make-believe employees to create questions and vote on those created by other coworkers.
 

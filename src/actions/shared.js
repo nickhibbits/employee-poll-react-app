@@ -4,7 +4,7 @@ import {
   _saveQuestion,
   _saveQuestionAnswer,
 } from "../utils/_DATA";
-import { setAuth } from "./auth";
+
 import { addQuestion, addQuestionAnswer, receiveQuestions } from "./questions";
 import { addUserAnswer, addUserQuestion, receiveUsers } from "./users";
 

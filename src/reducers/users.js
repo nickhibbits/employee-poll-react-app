@@ -5,7 +5,6 @@ import {
 } from "../actions/users";
 
 export default function users(state = {}, action) {
-  console.log("state", state);
   switch (action.type) {
     case RECEIVE_USERS:
       return {

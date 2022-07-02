@@ -10,7 +10,6 @@ import NewQuestion from "./NewQuestion";
 import Vote from "./vote/Vote";
 import Leaderboard from "./leaderboard/Leaderboard";
 import { handleInitialData } from "../actions/shared";
-// import "../styles/Login.css";
 
 function App(props) {
   const [_authedUser, set_authedUser] = useState(false);

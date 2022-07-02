@@ -10,7 +10,7 @@ const Dashboard = (props) => {
     <div className="dashboard-component">
       <div className="filter-wrapper">
         <h3>Filter questions:</h3>
-        <label className="filter-option">
+        <label className="filter-option" data-testid="answered-filter">
           Answered
           <input
             type="radio"
@@ -18,7 +18,7 @@ const Dashboard = (props) => {
             onChange={() => setShowAnsweredQuestions(true)}
           />
         </label>
-        <label className="filter-option">
+        <label className="filter-option" data-testid="unanswered-filter">
           Unanswered
           <input
             type="radio"

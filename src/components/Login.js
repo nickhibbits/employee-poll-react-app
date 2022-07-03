@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/login.css";
+import "../styles/Login.css";
 import "../styles/index.css";
 import { setAuth } from "../actions/auth";
 import { connect } from "react-redux";

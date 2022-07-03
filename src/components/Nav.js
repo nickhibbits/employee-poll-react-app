@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import "../styles/nav.css";
+import "../styles/Nav.css";
 
 const Nav = (props) => {
   return (

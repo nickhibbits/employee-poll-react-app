@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
-import "../styles/app.css";
+import "../styles/App.css";
 import Dashboard from "./dashboard/Dashboard";
 import Login from "./Login";
 import Nav from "./Nav";

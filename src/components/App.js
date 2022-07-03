@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { handleInitialData } from "../actions/shared";
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "../styles/App.css";
 import Dashboard from "./dashboard/Dashboard";
@@ -10,7 +11,6 @@ import NewQuestion from "./NewQuestion";
 import Vote from "./vote/Vote";
 import Leaderboard from "./leaderboard/Leaderboard";
 import NotFound from "./NotFound";
-import { handleInitialData } from "../actions/shared";
 
 function App(props) {
   const [_authedUser, set_authedUser] = useState(false);

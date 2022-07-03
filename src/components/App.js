@@ -9,6 +9,7 @@ import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
 import Vote from "./vote/Vote";
 import Leaderboard from "./leaderboard/Leaderboard";
+import NotFound from "./NotFound";
 import { handleInitialData } from "../actions/shared";
 
 function App(props) {
@@ -36,6 +37,7 @@ function App(props) {
           <Route path="/questions/:id" element={<Vote />} />
           <Route path="/add" element={<NewQuestion />} />
           <Route path="/leaderboard" exact element={<Leaderboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>

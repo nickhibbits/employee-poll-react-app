@@ -1,13 +1,16 @@
-import Avatar from "react-avatar";
 import "../../styles/leaderboard.css";
 
 const LeaderboardRow = ({ user }) => {
-  const { name, questions, answers } = user;
+  const { name, questions, answers, avatarURL } = user;
   return (
     <tbody>
       <tr className="leaderboard-row-component">
         <td className="user-info-wrapper">
-          <Avatar name={name} size="50px" round={true} />
+          <img
+            src={avatarURL}
+            alt="user-avatar"
+            style={{ maxHeight: "50px" }}
+          />
           <div className="user-name">{name}</div>
         </td>
         <td className="questions-asked">{questions.length}</td>

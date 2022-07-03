@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { handleAnswerQuestion } from "../../actions/shared";
 
 import VoteOption from "./VoteOption";
-import Avatar from "react-avatar";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -68,7 +67,7 @@ const Vote = (props) => {
     <div className="vote-component">
       <section className="user-wrapper">
         <h2>Question from {props.question.author}</h2>
-        <Avatar name={props.question.author} round={true} />
+        <img src={props.avatar} alt="user-avatar" />
       </section>
       <section className="vote-options-wrapper" round="10px">
         <h2>Would you rather</h2>
@@ -124,6 +123,7 @@ const mapStateToProps = ({ questions, users, auth }, props) => {
     id,
     question: questions[id] ? questions[id] : 404,
     userAnswer: users[auth.signedIn].answers[id],
+    avatar: users[questions[id].author].avatarURL,
   };
 };
 

@@ -11,6 +11,20 @@ import { addUserAnswer, addUserQuestion, receiveUsers } from "./users";
 export function handleInitialData() {
   return (dispatch) => {
     _getUsers().then((res) => {
+      console.log("user res", res);
+
+      const usersArray = Object.values(res).map((user) => {
+        return Object.assign(user, {
+          avatarURL: `https://i.pravatar.cc/150?u=${user.id}`,
+        });
+      });
+
+      let users;
+
+      usersArray.forEach((user, i) => {
+        users = { ...users, [usersArray[i].id]: user };
+      });
+
       dispatch(receiveUsers(res));
     });
 

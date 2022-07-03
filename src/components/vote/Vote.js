@@ -39,7 +39,7 @@ const Vote = (props) => {
 
   function handleSubmit() {
     props.dispatch(handleAnswerQuestion(props.question.id, selected));
-    setShowVoteStats(true);
+    props.router.navigate("/");
   }
 
   function createStats(question, selected) {

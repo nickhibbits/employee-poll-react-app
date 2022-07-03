@@ -42,6 +42,10 @@ const Vote = (props) => {
     optionTwo.current = props.questions[props.id].optionTwo;
     author.current = props.questions[props.id].author;
 
+    console.log("optionOne", optionOne);
+    console.log("optionTwo", optionTwo);
+    console.log("author", author);
+
     if (selected) {
       setShowVoteStats(true);
     }
@@ -90,7 +94,7 @@ const Vote = (props) => {
         <h2>Would you rather</h2>
         <div className="options-container">
           <VoteOption
-            text={optionOne.text}
+            text={optionOne.current.text}
             handleSelect={handleSelect}
             option={"optionOne"}
             selected={selected}
@@ -113,7 +117,7 @@ const Vote = (props) => {
           ) : null}
           <div className="or-divider">or</div>
           <VoteOption
-            text={optionTwo.text}
+            text={optionTwo.current.text}
             handleSelect={handleSelect}
             option={"optionTwo"}
             selected={selected}

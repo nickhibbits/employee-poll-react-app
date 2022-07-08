@@ -2,7 +2,7 @@ import "../../styles/vote.css";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { handleAnswerQuestion } from "../../actions/shared";
 
 import VoteOption from "./VoteOption";
@@ -24,28 +24,19 @@ const Vote = (props) => {
   const [showVoteStats, setShowVoteStats] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const optionOne = useRef({});
-  const optionTwo = useRef({});
-  const author = useRef("");
+  const question = props.questions[props.id];
+  const { optionOne, optionTwo, author } = question;
+  const { dispatch, router, id, avatar } = props;
 
   useEffect(() => {
-    console.log("props", props);
-
     if (submitted) {
-      return props.router.navigate("/");
+      return router.navigate("/");
     }
 
-    if (!props.questions[props.id]) {
+    if (!question) {
       console.log("no matching questions");
-      return props.router.navigate("/404");
+      return router.navigate("/404");
     }
-    optionOne.current = props.questions[props.id].optionOne;
-    optionTwo.current = props.questions[props.id].optionTwo;
-    author.current = props.questions[props.id].author;
-
-    console.log("optionOne", optionOne);
-    console.log("optionTwo", optionTwo);
-    console.log("author", author);
 
     if (selected) {
       setShowVoteStats(true);
@@ -60,64 +51,37 @@ const Vote = (props) => {
   }
 
   function handleSubmit() {
-    props.dispatch(handleAnswerQuestion(props.question.id, selected));
+    dispatch(handleAnswerQuestion(id, selected));
     setSubmitted(true);
-  }
-
-  function createStats(question, selected) {
-    const optionOneVoteCount = question.optionOne.votes.length;
-    const optionTwoVoteCount = question.optionTwo.votes.length;
-    const countTotal = optionOneVoteCount + optionTwoVoteCount;
-
-    const votePercentage =
-      selected === "optionOne"
-        ? ((optionOneVoteCount / countTotal) * 100).toFixed(1)
-        : ((optionTwoVoteCount / countTotal) * 100).toFixed(1);
-
-    return {
-      votePercentage,
-      voteCount:
-        selected === "optionOne" ? optionOneVoteCount : optionTwoVoteCount,
-    };
-  }
-
-  if (props.question === 404) {
-    return <div>404 not found</div>;
   }
 
   return (
     <div className="vote-component">
       <section className="user-wrapper">
-        <h2>Question from {author.current}</h2>
+        <h2>Question from {author}</h2>
         <img src={props.avatar} alt="user-avatar" />
       </section>
       <section className="vote-options-wrapper" round="10px">
         <h2>Would you rather</h2>
         <div className="options-container">
           <VoteOption
-            text={optionOne.current.text}
+            text={optionOne.text}
             handleSelect={handleSelect}
             option={"optionOne"}
             selected={selected}
           />
           {showVoteStats ? (
-            <VoteStats
-              question={props.questions[props.id]}
-              selected={"optionOne"}
-            />
+            <VoteStats question={question} selected={"optionOne"} />
           ) : null}
           <div className="or-divider">or</div>
           <VoteOption
-            text={optionTwo.current.text}
+            text={optionTwo.text}
             handleSelect={handleSelect}
             option={"optionTwo"}
             selected={selected}
           />
           {showVoteStats ? (
-            <VoteStats
-              question={props.questions[props.id]}
-              selected={"optionTwo"}
-            />
+            <VoteStats question={question} selected={"optionTwo"} />
           ) : null}
         </div>
       </section>

@@ -2,8 +2,15 @@ import "../../styles/vote.css";
 
 const VoteStats = ({ question, selected }) => {
   function createStats(question, selected) {
-    const optionOneVoteCount = question.optionOne.votes.length;
-    const optionTwoVoteCount = question.optionTwo.votes.length;
+    let optionOneVoteCount = question.optionOne.votes.length;
+    let optionTwoVoteCount = question.optionTwo.votes.length;
+
+    console.log("selected", selected);
+
+    selected === "optionOne"
+      ? (optionOneVoteCount += 1)
+      : (optionTwoVoteCount += 1);
+
     const countTotal = optionOneVoteCount + optionTwoVoteCount;
 
     const votePercentage =

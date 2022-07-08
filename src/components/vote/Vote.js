@@ -28,27 +28,23 @@ const Vote = (props) => {
   const { optionOne, optionTwo, author } = question;
   const { dispatch, router, id, avatar, answered } = props;
 
-  console.log("question", question);
-
   useEffect(() => {
     if (submitted) {
       return router.navigate("/");
     }
 
     if (!question) {
-      console.log("no matching questions");
+      // console.log("no matching questions");
       return router.navigate("/404");
     }
 
     if (answered) {
       setShowVoteStats(true);
     }
-  }, [selected, router, submitted, question]);
+  }, [selected, router, submitted, question, answered]);
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;
-
-    console.log("selectedText", selectedText);
 
     selectedText === `${optionOne.text}?`
       ? setSelected("optionOne")
@@ -58,31 +54,6 @@ const Vote = (props) => {
   function handleSubmit() {
     dispatch(handleAnswerQuestion(id, selected));
     setSubmitted(true);
-  }
-
-  function createStats(question, selected, optionId) {
-    let votePercentage;
-    let voteCount;
-
-    let optionOneVoteCount = question.optionOne.votes.length;
-    let optionTwoVoteCount = question.optionTwo.votes.length;
-
-    const countTotal = optionOneVoteCount + optionTwoVoteCount + 1;
-
-    if (optionId === "optionOne" && selected === optionId) {
-      optionOneVoteCount += 1;
-      voteCount = optionOneVoteCount;
-      votePercentage = ((optionOneVoteCount / countTotal) * 100).toFixed(1);
-    } else {
-      optionTwoVoteCount += 1;
-      voteCount = optionTwoVoteCount;
-      votePercentage = ((optionTwoVoteCount / countTotal) * 100).toFixed(1);
-    }
-
-    return {
-      votePercentage,
-      voteCount,
-    };
   }
 
   return (
@@ -134,13 +105,10 @@ const mapStateToProps = ({ questions, users, auth }, props) => {
   const { id } = props.router.params;
   const signedInUser = users[auth.signedIn];
 
-  console.log("current question", questions[id]);
-
   const answered = Object.keys(signedInUser.answers).includes(questions[id].id)
     ? true
     : false;
 
-  console.log("answered", answered);
   return {
     id,
     questions,

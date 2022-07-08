@@ -26,7 +26,9 @@ const Vote = (props) => {
 
   const question = props.questions[props.id];
   const { optionOne, optionTwo, author } = question;
-  const { dispatch, router, id, avatar } = props;
+  const { dispatch, router, id, avatar, answered } = props;
+
+  console.log("question", question);
 
   useEffect(() => {
     if (submitted) {
@@ -38,13 +40,16 @@ const Vote = (props) => {
       return router.navigate("/404");
     }
 
-    if (selected) {
+    if (answered) {
       setShowVoteStats(true);
     }
-  }, [selected, props, submitted]);
+  }, [selected, router, submitted, question]);
 
   function handleSelect(e) {
     const selectedText = e.target.textContent;
+
+    console.log("selectedText", selectedText);
+
     selectedText === `${optionOne.text}?`
       ? setSelected("optionOne")
       : setSelected("optionTwo");
@@ -59,7 +64,7 @@ const Vote = (props) => {
     <div className="vote-component">
       <section className="user-wrapper">
         <h2>Question from {author}</h2>
-        <img src={props.avatar} alt="user-avatar" />
+        <img src={avatar} alt="user-avatar" />
       </section>
       <section className="vote-options-wrapper" round="10px">
         <h2>Would you rather</h2>
@@ -71,7 +76,11 @@ const Vote = (props) => {
             selected={selected}
           />
           {showVoteStats ? (
-            <VoteStats question={question} selected={"optionOne"} />
+            <VoteStats
+              question={question}
+              selected={selected}
+              optionId={"optionOne"}
+            />
           ) : null}
           <div className="or-divider">or</div>
           <VoteOption
@@ -81,7 +90,11 @@ const Vote = (props) => {
             selected={selected}
           />
           {showVoteStats ? (
-            <VoteStats question={question} selected={"optionTwo"} />
+            <VoteStats
+              question={question}
+              selected={selected}
+              optionId={"optionTwo"}
+            />
           ) : null}
         </div>
       </section>
@@ -92,10 +105,16 @@ const Vote = (props) => {
 
 const mapStateToProps = ({ questions, users, auth }, props) => {
   const { id } = props.router.params;
+  const signedInUser = users[auth.signedIn];
+
+  const answered = Object.keys(signedInUser.answers).includes(questions[id])
+    ? true
+    : false;
 
   return {
     id,
     questions,
+    answered,
     userAnswer: users[auth.signedIn].answers[id],
     avatar: questions[id] ? users[questions[id].author].avatarURL : null,
   };

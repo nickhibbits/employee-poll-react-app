@@ -1,38 +1,42 @@
 import "../../styles/vote.css";
 
-const VoteStats = ({ question, selected }) => {
-  function createStats(question, selected) {
+const VoteStats = ({ question, selected, optionId }) => {
+  function createStats(question, selected, optionId) {
     let optionOneVoteCount = question.optionOne.votes.length;
     let optionTwoVoteCount = question.optionTwo.votes.length;
 
     console.log("selected", selected);
 
-    selected === "optionOne"
-      ? (optionOneVoteCount += 1)
-      : (optionTwoVoteCount += 1);
+    let votePercentage;
+    let voteCount;
+    const countTotal = optionOneVoteCount + optionTwoVoteCount + 1;
 
-    const countTotal = optionOneVoteCount + optionTwoVoteCount;
-
-    const votePercentage =
-      selected === "optionOne"
-        ? ((optionOneVoteCount / countTotal) * 100).toFixed(1)
-        : ((optionTwoVoteCount / countTotal) * 100).toFixed(1);
+    if (optionId === "optionOne" && selected === optionId) {
+      optionOneVoteCount += 1;
+      voteCount = optionOneVoteCount;
+      votePercentage = ((optionOneVoteCount / countTotal) * 100).toFixed(1);
+    } else {
+      optionTwoVoteCount += 1;
+      voteCount = optionTwoVoteCount;
+      votePercentage = ((optionTwoVoteCount / countTotal) * 100).toFixed(1);
+    }
 
     return {
       votePercentage,
-      voteCount:
-        selected === "optionOne" ? optionOneVoteCount : optionTwoVoteCount,
+      voteCount,
     };
   }
 
+  const { votePercentage, voteCount } = createStats(
+    question,
+    selected,
+    optionId
+  );
+
   return (
     <div className="vote-stats-component">
-      <div className="vote-stat-info">
-        {createStats(question, selected).votePercentage}% of votes cast
-      </div>
-      <div className="vote-stat-info">
-        {createStats(question, selected).voteCount} votes total
-      </div>
+      <div className="vote-stat-info">{votePercentage}% of votes cast</div>
+      <div className="vote-stat-info">{voteCount} votes total</div>
     </div>
   );
 };

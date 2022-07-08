@@ -60,7 +60,7 @@ const Vote = (props) => {
     setSubmitted(true);
   }
 
-  function createStats(question, selected) {
+  function createStats(question, selected, optionId) {
     let votePercentage;
     let voteCount;
 
@@ -102,8 +102,9 @@ const Vote = (props) => {
           />
           {showVoteStats ? (
             <VoteStats
-              voteCount={createStats()}
-              votePercentage={createStats()}
+              question={question}
+              selected={selected}
+              optionId={"optionOne"}
             />
           ) : null}
           <div className="or-divider">or</div>
@@ -115,8 +116,9 @@ const Vote = (props) => {
           />
           {showVoteStats ? (
             <VoteStats
-              voteCount={createStats()}
-              votePercentage={createStats()}
+              question={question}
+              selected={selected}
+              optionId={"optionTwo"}
             />
           ) : null}
         </div>

@@ -123,7 +123,9 @@ const Vote = (props) => {
           ) : null}
         </div>
       </section>
-      <button onClick={handleSubmit}>Submit</button>
+      <button disabled={answered ? true : false} onClick={handleSubmit}>
+        Submit
+      </button>
     </div>
   );
 };

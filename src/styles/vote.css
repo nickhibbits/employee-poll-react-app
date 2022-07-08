@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 
-.stats-wrapper {
+.vote-stats-component {
   display: flex;
   flex-direction: column;
   justify-content: center;

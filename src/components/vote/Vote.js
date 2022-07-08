@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { handleAnswerQuestion } from "../../actions/shared";
 
 import VoteOption from "./VoteOption";
+import VoteStats from "./VoteStats";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -100,20 +101,10 @@ const Vote = (props) => {
             selected={selected}
           />
           {showVoteStats ? (
-            <div className="stats-wrapper">
-              {/* <div className="vote-stat-title">This option received</div> */}
-              <div className="vote-stat-info">
-                {
-                  createStats(props.questions[props.id], "optionOne")
-                    .votePercentage
-                }
-                % of votes cast
-              </div>
-              <div className="vote-stat-info">
-                {createStats(props.questions[props.id], "optionOne").voteCount}{" "}
-                votes total
-              </div>
-            </div>
+            <VoteStats
+              question={props.questions[props.id]}
+              selected={"optionOne"}
+            />
           ) : null}
           <div className="or-divider">or</div>
           <VoteOption
@@ -123,20 +114,10 @@ const Vote = (props) => {
             selected={selected}
           />
           {showVoteStats ? (
-            <div className="stats-wrapper">
-              {/* <div className="vote-stat-title">This option received</div> */}
-              <div className="vote-stat-info">
-                {
-                  createStats(props.questions[props.id], "optionTwo")
-                    .votePercentage
-                }
-                % of votes cast
-              </div>
-              <div className="vote-stat-info">
-                {createStats(props.questions[props.id], "optionTwo").voteCount}{" "}
-                votes total
-              </div>
-            </div>
+            <VoteStats
+              question={props.questions[props.id]}
+              selected={"optionTwo"}
+            />
           ) : null}
         </div>
       </section>
